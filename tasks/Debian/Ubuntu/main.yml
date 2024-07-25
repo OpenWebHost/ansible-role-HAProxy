@@ -1,0 +1,9 @@
+---
+
+- name: Install HAProxy
+  ansible.builtin.apt:
+    name: haproxy
+    state: present
+  become: true
+  notify:
+  - start HAProxy service

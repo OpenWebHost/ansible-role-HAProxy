@@ -1,0 +1,15 @@
+---
+---
+- name: from
+  include_tasks: "from:/{{ silverblue_default }}/main.yml"
+  when: not silverblue_default == "rpm"
+
+- name: Install core KVM packages
+  community.general.rpm_ostree_pkg:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - haproxy
+  become: true
+  notify:
+  - start HAProxy service

@@ -1,0 +1,11 @@
+---
+- name: Install HAProxy
+  become: true
+  ansible.builtin.dnf:
+    name: haproxy
+    state: latest
+  notify:
+  - start HAProxy service
+
+    # name:
+    #   - packer
